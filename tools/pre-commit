@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e;
+poetry run pre-commit run --all-files;
+make autolint
+make lint
