@@ -1,0 +1,31 @@
+name: onpush
+
+on:
+  push:
+
+env:
+  PYTHON_VERSION: 3.8.9
+jobs:
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+      - name: Checkout LFS objects
+        run: |
+          git lfs checkout
+      - name: install-python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: install poetry
+        run: |
+          pip install poetry==1.1.13
+          poetry config virtualenvs.in-project true
+      - name: install dependencies
+        if: steps.load-cached.outputs.cache-hit != 'true'
+
+        run: poetry install
