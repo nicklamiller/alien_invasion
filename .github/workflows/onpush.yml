@@ -23,7 +23,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: install poetry
         run: |
-          pip install poetry==1.1.13
+          pip install poetry==1.2.1
           poetry config virtualenvs.in-project true
       - name: install dependencies
         if: steps.load-cached.outputs.cache-hit != 'true'
