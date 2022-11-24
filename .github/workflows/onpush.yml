@@ -29,3 +29,12 @@ jobs:
         if: steps.load-cached.outputs.cache-hit != 'true'
 
         run: poetry install
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+      - name: wemake-python-styleguide
+        uses: wemake-services/wemake-python-styleguide@0.17.0
