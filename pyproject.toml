@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "alien_invasion"}]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 pygame = "^2.1.2"
 
 [tool.poetry.dev-dependencies]
