@@ -3,21 +3,24 @@ LINT_FOLDERS=alien_invasion
 
 
 autolint:
-    @${POETRY_RUN} autopep8 -r -i ${LINT_FOLDERS}
-    @${POETRY RUN} unify -r -i ${LINT_FOLDERS}
-    @${POETRY_RUN} isort ${LINT_FOLDERS}I
+	@${POETRY_RUN} autopep8 -r -i ${LINT_FOLDERS}
+	@${POETRY RUN} unify -r -i ${LINT_FOLDERS}
+	@${POETRY_RUN} isort ${LINT_FOLDERS}
 
 install: install-dev
-    poetry install
+	poetry install
+
+install-dev:
+	cp tools/pre-commit .git/hooks
+	chmod +x .git/hooks/pre-commit
 
 lint:
-    @${POETRY_RUN} flake8 ${LINT_FOLDERS}
+	@${POETRY_RUN} flake8 ${LINT_FOLDERS}
 
 precommit: poetry-precommit autolint lint
 
 poetry-precommit:
-    poetry run pre-commit run --all-files
+	poetry run pre-commit run --all-files
 
 shell:
-    poetry shell
-
+	poetry shell
