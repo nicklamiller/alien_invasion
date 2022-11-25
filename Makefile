@@ -1,6 +1,8 @@
 POETRY_RUN := poetry run
 LINT_FOLDERS=alien_invasion
 
+.PHONY: autolint install install-dev lint precommit \
+        poetry-precommit shell
 
 autolint:
 	@${POETRY_RUN} autopep8 -r -i ${LINT_FOLDERS}
