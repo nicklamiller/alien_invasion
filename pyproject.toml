@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "alien-invasion"
+version = "0.1.0"
+description = "alienz"
+authors = ["nicklamiller <nicklamiller@gmail.com>"]
+readme = "README.md"
+packages = [{include = "alien_invasion"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+pygame = "^2.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.2.0"
+autopep8 = "^1.6.0"
+flake8 = "^4.0.1"
+unify = "^0.5"
+wemake-python-styleguide = "^0.17.0"
+isort = "^5.10.1"
+pre-commit = "^2.20.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
