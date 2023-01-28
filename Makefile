@@ -7,7 +7,7 @@ NC=\033[0m # No Color
 		install-dev test report-coverage lint-mypy game
 
 game: |
-	${POETRY_RUN} python -m src.alien_invasion
+		${POETRY_RUN} python -m src.alien_invasion
 
 test:
 		${POETRY_RUN} coverage erase
