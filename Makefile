@@ -4,7 +4,10 @@ PROJ= src
 NC=\033[0m # No Color
 
 .PHONY: install autolint lint lint-flake8 shell precommit poetry-precommit \
-		install-dev test report-coverage
+		install-dev test report-coverage lint-mypy game
+
+game: |
+	${POETRY_RUN} python -m src.alien_invasion
 
 test:
 		${POETRY_RUN} coverage erase
