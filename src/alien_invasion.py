@@ -4,6 +4,7 @@ import sys
 import pygame
 
 from src.settings import Settings
+from src.ship import Ship
 
 
 def run_game():
@@ -16,6 +17,7 @@ def run_game():
         ),
     )  # noqa: F841
     pygame.display.set_caption('Alien Invasion')
+    ship = Ship(screen)
 
     while True:
         for event in pygame.event.get():
@@ -23,6 +25,7 @@ def run_game():
                 sys.exit()
 
         screen.fill(game_settings.background_color)
+        ship.blitme()
 
         pygame.display.flip()
 
