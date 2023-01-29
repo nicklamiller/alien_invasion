@@ -13,3 +13,4 @@ class Settings(BaseModel):
     bullet_width = 3
     bullet_height = 15
     bullet_color = 60, 60, 60
+    bullets_allowed = 3

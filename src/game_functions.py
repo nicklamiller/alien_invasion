@@ -60,8 +60,9 @@ def check_keydown_events(
     if event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        new_bullet = Bullet(game_settings, screen, ship)
-        bullets.add(new_bullet)
+        if len(bullets) < game_settings.bullets_allowed:
+            new_bullet = Bullet(game_settings, screen, ship)
+            bullets.add(new_bullet)
 
 
 def check_keyup_events(
