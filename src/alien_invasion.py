@@ -7,7 +7,7 @@ from src.settings import Settings
 from src.ship import Ship
 
 
-def run_game():
+def run_game():  # noqa: WPS213
     pygame.init()
     game_settings = Settings()
     screen = pygame.display.set_mode(
@@ -25,6 +25,11 @@ def run_game():
         gf.check_events(game_settings, screen, ship, bullets)
         ship.update()
         bullets.update()
+
+        for bullet in bullets.copy():
+            if bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+
         gf.update_screen(game_settings, screen, ship, bullets)
         screen.fill(game_settings.background_color)
         ship.blitme()
