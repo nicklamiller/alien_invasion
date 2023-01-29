@@ -7,11 +7,23 @@ from src.settings import Settings
 from src.ship import Ship
 
 
-def check_events() -> None:
-    """Respond to key presses and mouse events."""
+def check_events(ship: Ship) -> None:
+    """Respond to key presses and mouse events.
+
+    Args:
+        ship: a Ship object
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RIGHT:
+                ship.moving_right = True
+
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_RIGHT:
+                ship.moving_right = False
 
 
 def update_screen(

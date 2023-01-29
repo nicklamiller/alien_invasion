@@ -20,8 +20,8 @@ def run_game():
 
     while True:
 
-        gf.check_events()
-
+        gf.check_events(ship)
+        ship.update()
         screen.fill(game_settings.background_color)
         ship.blitme()
 
