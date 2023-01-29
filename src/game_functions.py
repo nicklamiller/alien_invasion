@@ -81,6 +81,18 @@ def check_keyup_events(
         ship.moving_left = False
 
 
+def update_bullets(bullets):
+    """Update position of bullets and get rid of old bullets.
+
+    Args:
+        bullets: a pygame group of bullets.
+    """
+    bullets.update()
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+
+
 def update_screen(
     game_settings: Settings,
     screen,
