@@ -1,7 +1,7 @@
 """Main module for running Alien Invasion."""
 import pygame
 
-import game_functions as gf  # type: ignore
+import src.game_functions as gf  # noqa: WPS301
 from src.settings import Settings
 from src.ship import Ship
 
