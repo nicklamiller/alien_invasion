@@ -1,8 +1,7 @@
 """Main module for running Alien Invasion."""
-import sys
-
 import pygame
 
+import src.game_functions as gf  # noqa: WPS301
 from src.settings import Settings
 from src.ship import Ship
 
@@ -20,10 +19,9 @@ def run_game():
     ship = Ship(screen)
 
     while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                sys.exit()
 
+        gf.check_events(ship)
+        ship.update()
         screen.fill(game_settings.background_color)
         ship.blitme()
 
