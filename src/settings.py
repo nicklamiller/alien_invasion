@@ -8,3 +8,4 @@ class Settings(BaseModel):
     screen_width: int = 1200
     screen_height: int = 800
     background_color: tuple = (230, 230, 230)
+    ship_speed_factor: float = 1.5
