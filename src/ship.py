@@ -25,9 +25,9 @@ class Ship():  # noqa: WPS306
 
     def update(self):
         """Update the ship's position based on the movement flag."""
-        if self.moving_right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             self.center += 1
-        if self.moving_left:
+        if self.moving_left and self.rect.left > 0:
             self.center -= 1
         self.rect.centerx = self.center
 
