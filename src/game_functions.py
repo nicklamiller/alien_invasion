@@ -61,6 +61,8 @@ def check_keydown_events(
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
         fire_bullet(game_settings, screen, ship, bullets)
+    elif event.key == pygame.K_q:
+        sys.exit()
 
 
 def check_keyup_events(
