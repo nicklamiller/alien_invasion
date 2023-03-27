@@ -153,5 +153,5 @@ def update_screen(
     for bullet in bullets:
         bullet.draw_bullet()
     ship.blitme()
-    aliens.draw()
+    aliens.draw(screen)
     pygame.display.flip()
