@@ -3,6 +3,7 @@ import sys
 
 import pygame
 
+from src.alien import Alien
 from src.bullet import Bullet
 from src.settings import Settings
 from src.ship import Ship
@@ -100,6 +101,26 @@ def fire_bullet(
         bullets.add(new_bullet)
 
 
+def create_fleet(game_settings, screen, aliens):
+    """Create a fleet full of aliens.
+
+    Args:
+        game_settings: configurable game settings
+        screen: a pygame screen
+        aliens: a pygame group of aliens
+    """
+    alien = Alien(game_settings, screen)
+    alien_width = alien.rect.width
+    available_space_x = game_settings.screen_width - 2 * alien_width
+    number_aliens_x = int(available_space_x / (2 * alien_width))
+
+    for alien_number in range(number_aliens_x):
+        alien = Alien(game_settings, screen)
+        alien.x = alien_width + 2 * alien_width * alien_number
+        alien.rect.x = alien.x
+        aliens.add(alien)
+
+
 def update_bullets(bullets):
     """Update position of bullets and get rid of old bullets.
 
@@ -116,7 +137,7 @@ def update_screen(
     game_settings: Settings,
     screen,
     ship: Ship,
-    alien,
+    aliens,
     bullets,
 ) -> None:
     """Update images and flip to new screen.
@@ -126,11 +147,11 @@ def update_screen(
         screen: a pygame display object that will produce the screen
         ship: a ship object that will move
         bullets: a pygame group of Bullet class
-        alien: an alien
+        aliens: a group of aliens
     """
     screen.fill(game_settings.background_color)
     for bullet in bullets:
         bullet.draw_bullet()
     ship.blitme()
-    alien.blitme()
+    aliens.draw()
     pygame.display.flip()
