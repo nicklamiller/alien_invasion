@@ -21,7 +21,7 @@ def run_game():  # noqa: WPS210, WPS213
     bullets = Group()
     aliens = Group()
 
-    gf.create_fleet(game_settings, screen, aliens)
+    gf.create_fleet(game_settings, screen, ship, aliens)
 
     while True:
 
