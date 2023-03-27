@@ -116,6 +116,7 @@ def update_screen(
     game_settings: Settings,
     screen,
     ship: Ship,
+    alien,
     bullets,
 ) -> None:
     """Update images and flip to new screen.
@@ -125,9 +126,11 @@ def update_screen(
         screen: a pygame display object that will produce the screen
         ship: a ship object that will move
         bullets: a pygame group of Bullet class
+        alien: an alien
     """
     screen.fill(game_settings.background_color)
     for bullet in bullets:
         bullet.draw_bullet()
     ship.blitme()
+    alien.blitme()
     pygame.display.flip()
