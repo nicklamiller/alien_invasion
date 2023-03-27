@@ -101,6 +101,38 @@ def fire_bullet(
         bullets.add(new_bullet)
 
 
+def get_number_aliens_x(game_settings, alien_width):
+    """Determine the number of aliens that fit in a row.
+
+    Args:
+        game_settings: configurable game settings
+        alien_width: int specifying alien width
+
+    Returns:
+        an int specifying number of aliens
+
+    """
+    available_space_x = game_settings.screen_width - 2 * alien_width
+    return int(available_space_x / (2 * alien_width))
+
+
+def create_alien(game_settings, screen, aliens, alien_number):
+    """Create an alien and place it in the row.
+
+    Args:
+        game_settings: configurable game settings
+        screen: a pygame screen
+        aliens: a pygame group of Alien
+        alien_number: alien number in fleet
+
+    """
+    alien = Alien(game_settings, screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
+
+
 def create_fleet(game_settings, screen, aliens):
     """Create a fleet full of aliens.
 
@@ -110,15 +142,10 @@ def create_fleet(game_settings, screen, aliens):
         aliens: a pygame group of aliens
     """
     alien = Alien(game_settings, screen)
-    alien_width = alien.rect.width
-    available_space_x = game_settings.screen_width - 2 * alien_width
-    number_aliens_x = int(available_space_x / (2 * alien_width))
+    number_aliens_x = get_number_aliens_x(game_settings, alien.rect.width)
 
     for alien_number in range(number_aliens_x):
-        alien = Alien(game_settings, screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        create_alien(game_settings, screen, aliens, alien_number)
 
 
 def update_bullets(bullets):
