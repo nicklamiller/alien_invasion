@@ -17,7 +17,3 @@ jobs:
   lint:
     name: Lint
     uses: ./.github/workflows/lint.yml
-
-  make-game:
-    name: Game
-    uses: ./.github/workflows/run-game.yml
