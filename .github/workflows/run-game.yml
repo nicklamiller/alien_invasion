@@ -40,6 +40,6 @@ jobs:
 
       - name: Run game
         run: |
-          make game
+          make game-runner
         env:
           PY_COLORS: 1
