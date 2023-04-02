@@ -8,7 +8,7 @@ NC=\033[0m # No Color
 
 
 game-runner: |
-		${POETRY_RUN} export SDL_VIDEODRIVER=dummy
+		export SDL_VIDEODRIVER=dummy
 		make game
 
 game: |
