@@ -1,16 +1,28 @@
-"""Keeping game settings organized in a class."""
-from pydantic import BaseModel
+"""Game settings."""
 
 
-class Settings(BaseModel):
+class Settings(object):
     """A class to store all settings for Alien Invasion."""
 
-    screen_width: int = 1200
-    screen_height: int = 800
-    background_color: tuple = (230, 230, 230)
-    ship_speed_factor: float = 1.5
-    bullet_speed_factor = 1
-    bullet_width = 3
-    bullet_height = 15
-    bullet_color = 60, 60, 60
-    bullets_allowed = 3
+    def __init__(self):
+        """Initialize the game's settings."""
+        # Screen settings
+        self.screen_width = 1200
+        self.screen_height = 800
+        self.bg_color = (230, 230, 230)
+
+        # Ship settings
+        self.ship_speed = 1.5
+
+        # Bullet settings
+        self.bullet_speed = 1.0
+        self.bullet_width = 3
+        self.bullet_height = 15
+        self.bullet_color = (60, 60, 60)
+        self.bullets_allowed = 3
+
+        # Alien settings
+        self.alien_speed = 1.0
+        self.fleet_drop_speed = 10
+        # fleet_direction of 1 represents right; -1 represents left.
+        self.fleet_direction = 1

@@ -193,6 +193,17 @@ def update_bullets(bullets):
             bullets.remove(bullet)
 
 
+def update_aliens(game_settings, aliens):
+    """Update position of aliens.
+
+    Args:
+        aliens: a pygame group of aliens.
+        game_settings: a class containing settings for game
+    """
+    check_fleet_edges(game_settings, aliens)
+    aliens.update()
+
+
 def update_screen(
     game_settings: Settings,
     screen,
@@ -209,9 +220,33 @@ def update_screen(
         bullets: a pygame group of Bullet class
         aliens: a group of aliens
     """
-    screen.fill(game_settings.background_color)
+    screen.fill(game_settings.bg_color)
     for bullet in bullets:
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
     pygame.display.flip()
+
+
+def check_fleet_edges(game_settings, aliens):
+    """Respond appropriately if any aliens have reached an edge.
+
+    Args:
+        game_settings: a class containing settings for game
+        aliens: a group of aliens
+    """
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(game_settings, aliens)
+
+
+def change_fleet_direction(game_settings, aliens):
+    """Drop the entire fleet and change the fleet's direction.
+
+    Args:
+        game_settings: a class containing settings for game
+        aliens: a group of aliens
+    """
+    for alien in aliens.sprites():
+        alien.rect.y += game_settings.fleet_drop_speed
+    game_settings.fleet_direction *= -1
