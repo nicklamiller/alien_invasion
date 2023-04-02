@@ -6,6 +6,11 @@ NC=\033[0m # No Color
 .PHONY: install autolint lint lint-flake8 shell precommit poetry-precommit \
 		install-dev test report-coverage lint-mypy game
 
+
+game-runner: |
+		export SDL_VIDEODRIVER=dummy
+		make game
+
 game: |
 		${POETRY_RUN} python -m src.alien_invasion
 
