@@ -181,7 +181,7 @@ def create_fleet(game_settings, screen, ship, aliens):
             )
 
 
-def update_bullets(bullets):
+def update_bullets(aliens, bullets):
     """Update position of bullets and get rid of old bullets.
 
     Args:
@@ -191,6 +191,12 @@ def update_bullets(bullets):
     for bullet in bullets.copy():
         if bullet.rect.bottom <= 0:
             bullets.remove(bullet)
+    collisions = pygame.sprite.groupcollide(  # noqa: F841
+        aliens,
+        bullets,
+        dokilla=True,
+        dokillb=True,
+    )
 
 
 def update_aliens(game_settings, aliens):

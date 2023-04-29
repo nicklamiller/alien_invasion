@@ -3,6 +3,7 @@ import sys
 
 import pygame
 
+from src import game_functions as gf
 from src.alien import Alien
 from src.bullet import Bullet
 from src.settings import Settings
@@ -33,7 +34,7 @@ class AlienInvasion(object):
         while True:
             self._check_events()
             self.ship.update()
-            self._update_bullets()
+            gf.update_bullets(self.aliens, self.bullets)
             self._update_aliens()
             self._update_screen()
 
